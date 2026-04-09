@@ -1,38 +1,26 @@
 public class Main {
-
     public static void main(String[] args) {
-        System.out.println("--- Exercício 13: Passagem de Objeto para Método ---");
 
-        // Criamos o carro
-        Carro meuCarro = new Carro("VW", "Gol", 2015);
+        System.out.println("--- Cadastro de Clientes ---");
 
-        // Passamos o carro para o método
-        trocarModelo(meuCarro);
+        // e) Criando os objetos usando os diferentes construtores
 
-        // Imprimimos o resultado
-        System.out.println("O modelo agora é: " + meuCarro.getModelo());
-    }
+        // Usando o Construtor 1 (Todos os dados)
+        Cliente c1 = new Cliente("Ana Silva", "ana@email.com", "(11) 98888-7777");
 
-    // Método que recebe um objeto do tipo Carro
-    public static void trocarModelo(Carro c) {
-        c.setModelo("Fusca");
+        // Usando o Construtor 2 (Sem telefone)
+        Cliente c2 = new Cliente("Bruno Souza", "bruno@email.com");
 
-        /*
-         * b) EXPLICAÇÃO DA QUESTÃO 13:
-         * * * Por que a mudança feita dentro do método afetou o objeto original?
-         * Porque, em Java, quando você passa um OBJETO como parâmetro para
-         * um método, você NÃO está passando uma cópia do carro inteiro (o que
-         * gastaria muita memória e seria lento). Você está passando uma cópia
-         * da REFERÊNCIA (o endereço de memória).
-         * * * O parâmetro 'c' aponta para onde?
-         * A variável 'c' (que só existe aqui dentro deste método) recebe o
-         * mesmo endereço de memória que 'meuCarro' tem lá no método main.
-         * Portanto, 'c' aponta exatamente para o MESMO objeto "Carro" que
-         * está guardado na memória Heap.
-         * * Como ambos os "controles remotos" (meuCarro e c) apontam para a mesma
-         * "TV", quando o método usa 'c' para mudar o modelo para Fusca, a "TV"
-         * real é alterada. Quando o main volta a rodar e pergunta o modelo,
-         * ele já encontra "Fusca".
-         */
+        // Usando o Construtor 3 (Apenas nome)
+        Cliente c3 = new Cliente("Carlos Mendes");
+
+        // Imprimindo os dados
+        System.out.println("\nLista de Clientes:");
+        c1.exibir();
+        c2.exibir();
+        c3.exibir();
+
+        // Imprimindo o total de clientes cadastrados usando a variável static
+        System.out.println("\nTotal de clientes cadastrados no sistema: " + Cliente.totalClientes);
     }
 }

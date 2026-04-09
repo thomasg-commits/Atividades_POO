@@ -1,19 +1,28 @@
 public class Carro {
 
-    // a) Atributos privados
     private String marca;
     private String modelo;
     private int ano;
+
+    // a) Construtor parametrizado
+    // Este é o método especial chamado no momento do "new"
+    public Carro(String marca, String modelo, int ano) {
+        this.marca = marca;
+        this.modelo = modelo;
+        // Usamos o setter aqui dentro para garantir que a regra de validação 
+        // do exercício anterior seja aplicada logo na criação do objeto!
+        this.setAno(ano);
+    }
 
     public void exibir() {
         System.out.println("Carro: " + marca + " " + modelo + " (Ano: " + ano + ")");
     }
 
     public int idadeDoCarro() {
-        return 2026 - ano;
+        return 2026 - ano; // Considerando 2026 como base, conforme o exercício 2
     }
 
-    // b) Getters e Setters
+    // --- Getters e Setters continuam aqui ---
 
     public String getMarca() {
         return marca;
@@ -35,12 +44,11 @@ public class Carro {
         return ano;
     }
 
-    // c) Setter com validação! A porta de entrada do dado está protegida.
     public void setAno(int ano) {
         if (ano < 1886 || ano > 2026) {
-            System.out.println("ERRO: Ano " + ano + " é inválido! O ano deve estar entre 1886 e 2026.");
+            System.out.println("ERRO: Ano " + ano + " inválido para o modelo " + this.modelo + "!");
         } else {
-            this.ano = ano; // Só altera o atributo se a regra for respeitada
+            this.ano = ano;
         }
     }
 }

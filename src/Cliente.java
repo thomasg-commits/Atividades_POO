@@ -1,6 +1,6 @@
 public class Cliente {
 
-    // d) Atributo estático (da classe)
+    // Atributo estático (da classe)
     public static int totalClientes = 0;
 
     // Atributos privados (da instância)
@@ -8,31 +8,30 @@ public class Cliente {
     private String email;
     private String telefone;
 
-    // a) Construtor 1: Completo
+    // Construtor 1: Completo
     public Cliente(String nome, String email, String telefone) {
         this.nome = nome;
         this.email = email;
         this.telefone = telefone;
-        totalClientes++; // Incrementa o total
+        totalClientes++;
     }
 
-    // b) Construtor 2: Sem telefone
+    // Construtor 2: Sem telefone
     public Cliente(String nome, String email) {
         this.nome = nome;
         this.email = email;
         this.telefone = "Não informado";
-        totalClientes++; // Incrementa o total
+        totalClientes++;
     }
 
-    // c) Construtor 3: Só o nome
+    // Construtor 3: Só o nome
     public Cliente(String nome) {
         this.nome = nome;
         this.email = "Não informado";
         this.telefone = "Não informado";
-        totalClientes++; // Incrementa o total
+        totalClientes++;
     }
 
-    // Método auxiliar para imprimir os dados facilmente
     public void exibir() {
         System.out.println("Nome: " + nome + " | Email: " + email + " | Tel: " + telefone);
     }

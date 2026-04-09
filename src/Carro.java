@@ -1,25 +1,31 @@
 public class Carro {
 
+    // a) Atributo de classe (static)
+    // Ele não pertence a um carro específico, pertence à classe "Carro" inteira.
+    public static int totalCarros = 0;
+
     private String marca;
     private String modelo;
     private int ano;
 
-    // a) Construtor 1: Parametrizado (Mantido do exercício 5)
+    // Construtor 1
     public Carro(String marca, String modelo, int ano) {
         this.marca = marca;
         this.modelo = modelo;
         this.setAno(ano);
+
+        // b) Incrementa o contador global toda vez que este construtor é chamado
+        totalCarros++;
     }
 
-    // b) Construtor 2: Sem parâmetros (Sobrecarga)
-    // Se quem estiver programando não souber os dados do carro no momento da criação,
-    // ele pode usar este construtor, que preenche tudo com valores padrão.
+    // Construtor 2 (Sem parâmetros)
     public Carro() {
         this.marca = "Desconhecido";
         this.modelo = "Desconhecido";
-        // Atribuímos diretamente aqui para evitar que a validação do setAno()
-        // grite "ERRO" ao tentar colocar o ano 0.
         this.ano = 0;
+
+        // b) Incrementa o contador global toda vez que este construtor é chamado
+        totalCarros++;
     }
 
     public void exibir() {
@@ -30,28 +36,12 @@ public class Carro {
         return 2026 - ano;
     }
 
-    // --- Getters e Setters continuam normais ---
-
-    public String getMarca() {
-        return marca;
-    }
-
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
-
-    public String getModelo() {
-        return modelo;
-    }
-
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
-    }
-
-    public int getAno() {
-        return ano;
-    }
-
+    // --- Getters e Setters continuam aqui em baixo ---
+    public String getMarca() { return marca; }
+    public void setMarca(String marca) { this.marca = marca; }
+    public String getModelo() { return modelo; }
+    public void setModelo(String modelo) { this.modelo = modelo; }
+    public int getAno() { return ano; }
     public void setAno(int ano) {
         if (ano < 1886 || ano > 2026) {
             System.out.println("ERRO: Ano " + ano + " inválido!");

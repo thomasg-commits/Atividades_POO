@@ -1,28 +1,34 @@
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("--- Testando a Sobrecarga de Construtores ---");
+        System.out.println("--- Criando a Frota ---");
 
-        // c) Criando usando o Construtor COM parâmetros
-        Carro carroCompleto = new Carro("Volkswagen", "Nivus", 2024);
+        // c) Criando 5 carros (misturando os construtores para testar)
+        Carro c1 = new Carro("Fiat", "Argo", 2022);
+        Carro c2 = new Carro("Honda", "HR-V", 2023);
+        Carro c3 = new Carro("Toyota", "Yaris", 2021);
+        Carro c4 = new Carro(); // Usando construtor vazio
+        Carro c5 = new Carro(); // Usando construtor vazio
 
-        // c) Criando usando o Construtor SEM parâmetros
-        Carro carroVazio = new Carro();
-
-        // Imprimindo os resultados
-        carroCompleto.exibir();
-        carroVazio.exibir();
+        // c) Imprimindo a variável static
+        System.out.println("\nTotal de carros fabricados no sistema: " + Carro.totalCarros);
 
         /*
-         * COMENTÁRIO - O QUE MUDA ENTRE OS DOIS?
-         * * O que muda é a flexibilidade fornecida ao programador que está usando a classe.
-         * * 1. Construtor Parametrizado (carroCompleto): É ideal para quando você JÁ TEM os dados
-         * no momento em que vai criar o objeto (ex: lendo de um banco de dados). O objeto já
-         * nasce pronto e válido.
-         * * 2. Construtor Sem Parâmetros (carroVazio): É útil quando você precisa instanciar o
-         * objeto primeiro para só depois preencher os dados usando os setters (ex: esperando
-         * o usuário digitar os valores num formulário tela por tela). O objeto nasce com um
-         * "estado padrão" seguro, evitando que a marca e o modelo fiquem nulos (null).
+         * d) RESPOSTAS AOS COMENTÁRIOS DA TAREFA:
+         * * 1. Por que acessamos com Carro.totalCarros e não c1.totalCarros?
+         * R: Porque a variável 'totalCarros' é da Classe (Carro), não do Objeto (c1, c2, etc).
+         * Não faz sentido perguntar para um único carro (c1) quantos carros existem no total.
+         * Nós perguntamos direto para a "fábrica" (a classe Carro). O Java até permite acessar
+         * via objeto, mas a boa prática e o correto logicamente é usar o NomeDaClasse.atributo.
+         * * 2. Qual a diferença entre atributo static e atributo de instância?
+         * R:
+         * - Atributo de Instância (marca, modelo): Cada vez que você dá um 'new', o Java
+         * cria uma cópia nova na memória. O c1 tem a sua marca, o c2 tem a sua marca. Eles
+         * são independentes.
+         * - Atributo Static (totalCarros): Existe apenas UMA ÚNICA cópia na memória do
+         * computador, compartilhada por todos os objetos. Se o c1 mexer no totalCarros,
+         * o c2, c3, c4 e c5 vão ver o valor alterado, pois todos olham para o mesmo
+         * lugar na memória.
          */
     }
 }

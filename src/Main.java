@@ -1,34 +1,32 @@
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("--- Testando Constantes (final) ---");
+        // b) CORREÇÃO DO CÓDIGO
+        // Declaramos a variável FORA do bloco if. Assim, ela pertence
+        // ao bloco do método main() inteiro.
+        int x = 0; // É boa prática inicializar com um valor padrão
 
-        // Imprimindo a constante para provar que temos acesso a ela
-        System.out.println("O primeiro carro moderno foi inventado em: " + Carro.ANO_PRIMEIRO_CARRO);
+        if (true) {
+            x = 10; // Aqui nós apenas alteramos o valor, não criamos a variável de novo
+        }
 
-        // c) Tentando alterar o valor da constante
-        // DESCOMENTE A LINHA ABAIXO NO INTELLIJ PARA VER O ERRO:
-        // Carro.ANO_PRIMEIRO_CARRO = 1900;
+        // Agora compila e imprime 10 perfeitamente!
+        System.out.println(x);
 
         /*
-         * c) EXPLICAÇÃO: O QUE ACONTECE E O QUE O 'final' FAZ?
-         * * * O que acontece?
-         * O IntelliJ vai acusar um erro de compilação dizendo:
-         * "Cannot assign a value to final variable 'ANO_PRIMEIRO_CARRO'".
-         * (Não é possível atribuir um valor a uma variável final). O código nem sequer roda.
-         * * * O que o 'final' faz?
-         * A palavra-chave 'final' bloqueia a variável. Ela diz ao Java: "Assim que essa
-         * variável receber um valor pela primeira vez, lacre a caixa. Ninguém mais, em
-         * nenhum lugar do código, poderá alterar o conteúdo dela".
-         * * * Por que isso é útil?
-         * Isso evita bugs gigantescos. Imagina se algum outro programador na sua equipe
-         * acidentalmente fizesse Carro.ANO_PRIMEIRO_CARRO = 2020. Todos os carros fabricados
-         * antes de 2020 passariam a dar "ERRO" no sistema de repente. Com o 'final', você
-         * blinda essa regra de negócio.
+         * c) EXPLICAÇÃO SOBRE O ESCOPO
+         * * O que é escopo?
+         * O escopo é o "raio de visibilidade" e o "tempo de vida" de uma variável.
+         * Em Java, o escopo é rigidamente delimitado pelo uso de chaves { }.
+         * * Por que a variável x original não existia fora do if?
+         * Uma variável "nasce" na linha em que é declarada e "morre" assim que o bloco
+         * (as chaves { } ) onde ela foi criada termina.
+         * * No código original da sua pergunta:
+         * 1. O Java entrava no `if {`
+         * 2. Criava a variável `int x = 10;` na memória.
+         * 3. O bloco terminava no `}`. Nesse exato milissegundo, o Java destruía o `x`.
+         * 4. Na linha de baixo, o `System.out.println(x)` tentava imprimir algo que já
+         * tinha sido apagado da memória. Por isso o Java dava erro!
          */
-
-        System.out.println("\nCriando um carro válido para testar a nova validação:");
-        Carro meuCarro = new Carro("Porsche", "911", 1990);
-        meuCarro.exibir();
     }
 }

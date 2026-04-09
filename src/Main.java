@@ -1,32 +1,27 @@
 public class Main {
     public static void main(String[] args) {
 
-        // b) CORREÇÃO DO CÓDIGO
-        // Declaramos a variável FORA do bloco if. Assim, ela pertence
-        // ao bloco do método main() inteiro.
-        int x = 0; // É boa prática inicializar com um valor padrão
+        System.out.println("--- Teste de Valor (Tipos Primitivos) ---");
 
-        if (true) {
-            x = 10; // Aqui nós apenas alteramos o valor, não criamos a variável de novo
-        }
+        int a = 10;
+        int b = a;
+        b = 99;
 
-        // Agora compila e imprime 10 perfeitamente!
-        System.out.println(x);
+        System.out.println("a = " + a);
+        System.out.println("b = " + b);
 
         /*
-         * c) EXPLICAÇÃO SOBRE O ESCOPO
-         * * O que é escopo?
-         * O escopo é o "raio de visibilidade" e o "tempo de vida" de uma variável.
-         * Em Java, o escopo é rigidamente delimitado pelo uso de chaves { }.
-         * * Por que a variável x original não existia fora do if?
-         * Uma variável "nasce" na linha em que é declarada e "morre" assim que o bloco
-         * (as chaves { } ) onde ela foi criada termina.
-         * * No código original da sua pergunta:
-         * 1. O Java entrava no `if {`
-         * 2. Criava a variável `int x = 10;` na memória.
-         * 3. O bloco terminava no `}`. Nesse exato milissegundo, o Java destruía o `x`.
-         * 4. Na linha de baixo, o `System.out.println(x)` tentava imprimir algo que já
-         * tinha sido apagado da memória. Por isso o Java dava erro!
+         * b) EXPLICAÇÃO: Alterar 'b' mudou 'a'? Por quê?
+         * * NÃO! Alterar 'b' não mudou o valor de 'a'.
+         * * POR QUÊ?
+         * Porque 'int' é um tipo PRIMITIVO em Java (assim como double, float, boolean, char).
+         * Tipos primitivos guardam o VALOR REAL direto na caixa da variável na memória.
+         * * Quando você fez a linha "int b = a;", o Java não conectou as duas variáveis.
+         * O que ele fez foi olhar para a caixa do 'a', ver que tinha o número 10 lá dentro,
+         * fazer uma CÓPIA exata desse número 10 e jogar dentro da caixa do 'b'.
+         * * A partir desse momento, as duas variáveis são completamente independentes.
+         * Se você muda o 'b' para 99, você está apenas substituindo o conteúdo da
+         * caixa do 'b'. A caixa do 'a' continua intacta com o seu 10 original.
          */
     }
 }

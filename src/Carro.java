@@ -4,25 +4,33 @@ public class Carro {
     private String modelo;
     private int ano;
 
-    // a) Construtor parametrizado
-    // Este é o método especial chamado no momento do "new"
+    // a) Construtor 1: Parametrizado (Mantido do exercício 5)
     public Carro(String marca, String modelo, int ano) {
         this.marca = marca;
         this.modelo = modelo;
-        // Usamos o setter aqui dentro para garantir que a regra de validação 
-        // do exercício anterior seja aplicada logo na criação do objeto!
         this.setAno(ano);
     }
 
+    // b) Construtor 2: Sem parâmetros (Sobrecarga)
+    // Se quem estiver programando não souber os dados do carro no momento da criação,
+    // ele pode usar este construtor, que preenche tudo com valores padrão.
+    public Carro() {
+        this.marca = "Desconhecido";
+        this.modelo = "Desconhecido";
+        // Atribuímos diretamente aqui para evitar que a validação do setAno()
+        // grite "ERRO" ao tentar colocar o ano 0.
+        this.ano = 0;
+    }
+
     public void exibir() {
-        System.out.println("Carro: " + marca + " " + modelo + " (Ano: " + ano + ")");
+        System.out.println("Carro: " + marca + " | Modelo: " + modelo + " | Ano: " + ano);
     }
 
     public int idadeDoCarro() {
-        return 2026 - ano; // Considerando 2026 como base, conforme o exercício 2
+        return 2026 - ano;
     }
 
-    // --- Getters e Setters continuam aqui ---
+    // --- Getters e Setters continuam normais ---
 
     public String getMarca() {
         return marca;
@@ -46,7 +54,7 @@ public class Carro {
 
     public void setAno(int ano) {
         if (ano < 1886 || ano > 2026) {
-            System.out.println("ERRO: Ano " + ano + " inválido para o modelo " + this.modelo + "!");
+            System.out.println("ERRO: Ano " + ano + " inválido!");
         } else {
             this.ano = ano;
         }

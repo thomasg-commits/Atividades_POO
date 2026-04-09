@@ -1,32 +1,28 @@
-import java.util.ArrayList;
-
 public class Main {
     public static void main(String[] args) {
 
-        // c) VANTAGEM DE USAR CONSTRUTOR:
-        // 1. Código mais limpo: Criamos e populamos o objeto em apenas 1 linha em vez de 4.
-        // 2. Segurança de estado: O objeto já "nasce" com os dados essenciais preenchidos.
-        //    Você não corre o risco de esquecer de chamar um setter e deixar o carro sem marca, por exemplo.
+        System.out.println("--- Testando a Sobrecarga de Construtores ---");
 
-        System.out.println("--- Criando carros com o Construtor ---");
+        // c) Criando usando o Construtor COM parâmetros
+        Carro carroCompleto = new Carro("Volkswagen", "Nivus", 2024);
 
-        // b) Criando objetos já passando os valores direto no "new"
-        Carro carro1 = new Carro("Toyota", "Corolla", 2023);
-        Carro carro2 = new Carro("Renault", "Kwid", 2019);
+        // c) Criando usando o Construtor SEM parâmetros
+        Carro carroVazio = new Carro();
 
-        // Testando a validação dentro do construtor!
-        Carro carro3 = new Carro("DeLorean", "DMC-12", 3000);
+        // Imprimindo os resultados
+        carroCompleto.exibir();
+        carroVazio.exibir();
 
-        System.out.println("\n--- Imprimindo os Dados ---");
-
-        // Colocando em uma lista para imprimir de forma elegante
-        ArrayList<Carro> frota = new ArrayList<>();
-        frota.add(carro1);
-        frota.add(carro2);
-        frota.add(carro3); // O DeLorean vai ficar com ano 0, pois a validação barrou o ano 3000
-
-        for (Carro c : frota) {
-            c.exibir();
-        }
+        /*
+         * COMENTÁRIO - O QUE MUDA ENTRE OS DOIS?
+         * * O que muda é a flexibilidade fornecida ao programador que está usando a classe.
+         * * 1. Construtor Parametrizado (carroCompleto): É ideal para quando você JÁ TEM os dados
+         * no momento em que vai criar o objeto (ex: lendo de um banco de dados). O objeto já
+         * nasce pronto e válido.
+         * * 2. Construtor Sem Parâmetros (carroVazio): É útil quando você precisa instanciar o
+         * objeto primeiro para só depois preencher os dados usando os setters (ex: esperando
+         * o usuário digitar os valores num formulário tela por tela). O objeto nasce com um
+         * "estado padrão" seguro, evitando que a marca e o modelo fiquem nulos (null).
+         */
     }
 }

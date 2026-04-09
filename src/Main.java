@@ -1,27 +1,38 @@
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("--- Teste de Valor (Tipos Primitivos) ---");
+        System.out.println("--- Exercício 12: Referência vs Valor (Objeto) ---");
 
-        int a = 10;
-        int b = a;
-        b = 99;
+        // Criando o objeto e a referência
+        Carro c1 = new Carro("Fiat", "Uno", 2020);
+        Carro c2 = c1;
 
-        System.out.println("a = " + a);
-        System.out.println("b = " + b);
+        // Alterando o modelo usando a variável c2
+        c2.setModelo("Palio");
+
+        // Imprimindo os resultados (Questão a)
+        System.out.println("Modelo de c1: " + c1.getModelo());
+        System.out.println("Modelo de c2: " + c2.getModelo());
 
         /*
-         * b) EXPLICAÇÃO: Alterar 'b' mudou 'a'? Por quê?
-         * * NÃO! Alterar 'b' não mudou o valor de 'a'.
-         * * POR QUÊ?
-         * Porque 'int' é um tipo PRIMITIVO em Java (assim como double, float, boolean, char).
-         * Tipos primitivos guardam o VALOR REAL direto na caixa da variável na memória.
-         * * Quando você fez a linha "int b = a;", o Java não conectou as duas variáveis.
-         * O que ele fez foi olhar para a caixa do 'a', ver que tinha o número 10 lá dentro,
-         * fazer uma CÓPIA exata desse número 10 e jogar dentro da caixa do 'b'.
-         * * A partir desse momento, as duas variáveis são completamente independentes.
-         * Se você muda o 'b' para 99, você está apenas substituindo o conteúdo da
-         * caixa do 'b'. A caixa do 'a' continua intacta com o seu 10 original.
+         * RESPOSTAS TEÓRICAS DO EXERCÍCIO:
+         * * a) Qual o modelo de c1 e de c2?
+         * R: Ambos os modelos imprimem "Palio".
+         * * b) Por que alterar c2 mudou c1? O que c1 e c2 compartilham?
+         * R: Ao fazer a atribuição "c2 = c1", o Java NÃO cria um novo objeto
+         * Carro. O que ele faz é copiar a "etiqueta" (a referência). Assim, c1
+         * e c2 passam a compartilhar o MESMO endereço de memória. Alterar os
+         * dados usando o controle c2 vai modificar a mesma "TV" que o c1 controla.
+         * * c) Qual a diferença entre o comportamento do ex 11 (int) e deste (Carro)?
+         * R: A diferença está em como a memória (Stack e Heap) funciona no Java:
+         * * 1. Tipos Primitivos (int do ex 11): O valor real (ex: 10) é guardado
+         * diretamente na memória STACK (pilha de execução rápida). Quando fazemos
+         * "b = a", o Java faz uma CÓPIA independente do valor na Stack.
+         * * 2. Objetos (Carro do ex 12): O objeto real com os dados do carro é
+         * muito pesado e é guardado na memória HEAP (monte). As variáveis c1 e c2
+         * ficam na STACK, mas elas não guardam o carro, guardam apenas o "caminho"
+         * (ponteiro) até o Heap. Fazer "c2 = c1" apenas copia o caminho na Stack,
+         * apontando as duas variáveis para o exato mesmo objeto no Heap.
          */
     }
 }
